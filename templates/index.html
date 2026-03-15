@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Device Monitoring Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div>
+                <h1>IoT Device Monitoring Dashboard</h1>
+                <p>Python Flask Demo for Sensor Monitoring</p>
+            </div>
+            <div class="status-box">
+                <span id="device-status" class="badge online">Online</span>
+                <small>Last update: <span id="last-updated">--:--:--</span></small>
+            </div>
+        </header>
+
+        <section class="cards">
+            <div class="card">
+                <h3>Temperature</h3>
+                <p id="temperature">-- °C</p>
+            </div>
+
+            <div class="card">
+                <h3>Humidity</h3>
+                <p id="humidity">-- %</p>
+            </div>
+
+            <div class="card">
+                <h3>Battery</h3>
+                <p id="battery">-- %</p>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <div class="card large-card">
+                <h3>Temperature Trend</h3>
+                <canvas id="tempChart"></canvas>
+            </div>
+        </section>
+
+        <section class="table-section">
+            <div class="card large-card">
+                <h3>Recent Telemetry</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Temperature</th>
+                            <th>Humidity</th>
+                            <th>Battery</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="telemetry-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
